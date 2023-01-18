@@ -1,0 +1,31 @@
+body {
+    width: 720px;
+    margin: auto;
+    border: 1px solid #DEE2E6;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+table {
+    border-top: 1px solid #DEE2E6;
+    margin-top: 20px;    
+}
+
+tbody tr:nth-last-child(1) {
+    border-bottom: transparent;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+button {
+    margin-right: 10px;
+}

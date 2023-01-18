@@ -1,0 +1,98 @@
+<body>
+    <div class="curso" *ngIf="visibilidadePaginaPrincipal; else paginaIncluirCurso">
+        <h2>Curso</h2>
+        <p>Nome:</p>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" (input)="capturarCursoDigitado($event)">
+          </div>
+        <button class="btn btn-primary" (click)="pesquisarCurso()">Pesquisar</button>
+        <table class="table" *ngIf="visibilidadeListaCompleta; else visibilidadeListaResultados">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Instrutor</th>
+                <th scope="col">Local</th>
+                <th scope="col">Carga Horaria</th>
+                <th scope="col">Data Inicio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let curso of cursos">
+                <td><input type="radio" name="radios"></td>
+                <th scope="row">{{curso.codigo}}</th>
+                <td>{{curso.nome}}</td>                
+                <td>{{curso.instrutor}}</td>                
+                <td>{{curso.local}}</td>                
+                <td>{{curso.cargaHoraria}}</td>                
+                <td>{{curso.dataInicio}}</td>                
+              </tr>              
+            </tbody>
+          </table>
+
+        <ng-template #visibilidadeListaResultados>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Instrutor</th>
+                    <th scope="col">Local</th>
+                    <th scope="col">Carga Horaria</th>
+                    <th scope="col">Data Inicio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let curso of resultadoPesquisa">
+                    <td><input type="radio" name="radios"></td>
+                    <th scope="row">{{curso.codigo}}</th>
+                    <td>{{curso.nome}}</td>                
+                    <td>{{curso.instrutor}}</td>                
+                    <td>{{curso.local}}</td>                
+                    <td>{{curso.cargaHoraria}}</td>                
+                    <td>{{curso.dataInicio}}</td>                
+                  </tr>              
+                </tbody>
+              </table>
+        </ng-template>
+        <button class="btn btn-primary" (click)="exibirPaginaPrincipal()">Incluir</button>
+    </div>
+    <ng-template #paginaIncluirCurso>
+        <h2>Curso - Incluir</h2>
+        <p>Nome:</p>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" #nomeCurso>
+          </div>
+        <p>Instrutor:</p>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" #nomeInstrutor>
+        </div>   
+        <p>Local:</p>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" #localCurso>
+        </div>  
+
+        <div class="row">
+            <div class="col">
+                <p>Carga Horária:</p>
+                <div class="input-group input-group-sm mb-3">
+                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" #cargaHoraria>
+                </div>   
+            </div>
+            <div class="col">
+                <p>Data Início:</p>
+                <div class="input-group input-group-sm mb-3">
+                    <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" #dataInicio>
+                </div>   
+            </div>
+            
+        </div>
+
+        <button class="btn btn-primary" (click)="incluirCurso(nomeCurso.value, nomeInstrutor.value, localCurso.value, cargaHoraria.value, dataInicio.value)">Incluir</button>
+        <button class="btn btn-primary" (click)="exibirPaginaPrincipal()">Voltar</button>
+    </ng-template>
+
+    
+</body>
